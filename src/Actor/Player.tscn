@@ -1,10 +1,141 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=25 format=2]
 
-[ext_resource path="res://assets/player.png" type="Texture" id=1]
+[ext_resource path="res://assets/Knight.png" type="Texture" id=1]
 [ext_resource path="res://src/Actor/Player.gd" type="Script" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 40, 40 )
+[sub_resource type="Animation" id=1]
+resource_name = "Attack"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0552733, 0.108758, 0.162242, 0.215726 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 15, 16, 17, 18, 19 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Idle"
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.00203761, 0.157053, 0.314106, 0.446865, 0.612226 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Jump"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 11, 12, 13, 14 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.00203761, 0.14467, 0.279467, 0.454858, 0.642476 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 5, 6, 7, 8, 9 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "Attack"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "Jump"
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "Run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=9]
+advance_condition = "IsMoving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+advance_condition = "NotIsMoving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+advance_condition = "IsJumping"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+advance_condition = "IsJumping"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+advance_condition = "IsAttacking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+advance_condition = "IsAttacking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+switch_mode = 2
+advance_condition = "NotIsMoving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+switch_mode = 2
+advance_condition = "IsMoving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+switch_mode = 2
+advance_condition = "NotIsMoving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+switch_mode = 2
+advance_condition = "IsMoving"
+
+[sub_resource type="AnimationNodeStateMachine" id=19]
+states/Attack/node = SubResource( 5 )
+states/Attack/position = Vector2( 321, -37.288 )
+states/Idle/node = SubResource( 6 )
+states/Idle/position = Vector2( 157, 72 )
+states/Jump/node = SubResource( 7 )
+states/Jump/position = Vector2( 321, 177 )
+states/Run/node = SubResource( 8 )
+states/Run/position = Vector2( 482, 72 )
+transitions = [ "Idle", "Run", SubResource( 9 ), "Run", "Idle", SubResource( 10 ), "Idle", "Jump", SubResource( 11 ), "Run", "Jump", SubResource( 12 ), "Idle", "Attack", SubResource( 13 ), "Run", "Attack", SubResource( 14 ), "Attack", "Idle", SubResource( 15 ), "Attack", "Run", SubResource( 16 ), "Jump", "Idle", SubResource( 17 ), "Jump", "Run", SubResource( 18 ) ]
+start_node = "Idle"
+graph_offset = Vector2( 0, -66.0905 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=20]
+
+[sub_resource type="RectangleShape2D" id=21]
+extents = Vector2( 38.2416, 60.2442 )
+
+[sub_resource type="RectangleShape2D" id=22]
+extents = Vector2( 10, 32.3748 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 8
@@ -15,11 +146,50 @@ gravity = 2000.0
 [node name="player" type="Sprite" parent="."]
 position = Vector2( 0, -48 )
 texture = ExtResource( 1 )
+vframes = 4
+hframes = 5
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="player"]
+anims/Attack = SubResource( 1 )
+anims/Idle = SubResource( 2 )
+anims/Jump = SubResource( 3 )
+anims/Run = SubResource( 4 )
+
+[node name="AnimationTree" type="AnimationTree" parent="player"]
+tree_root = SubResource( 19 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+process_mode = 0
+parameters/playback = SubResource( 20 )
+parameters/conditions/IsAttacking = false
+parameters/conditions/IsJumping = false
+parameters/conditions/IsMoving = false
+parameters/conditions/NotIsMoving = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -40 )
-shape = SubResource( 1 )
+position = Vector2( -13, -62 )
+shape = SubResource( 21 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 0, -352 )
+position = Vector2( 6.69849, -512.725 )
 current = true
+limit_left = 0
+limit_top = 0
+limit_smoothed = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+smoothing_speed = 7.0
+drag_margin_left = 0.0
+drag_margin_right = 0.0
+
+[node name="AttackArea" type="Area2D" parent="." groups=[
+"Sword",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2( 47.5713, -40.4543 )
+shape = SubResource( 22 )
+disabled = true
+[connection signal="animation_finished" from="player/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

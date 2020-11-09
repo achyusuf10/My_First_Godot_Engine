@@ -1,40 +1,96 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://assets/enemy.png" type="Texture" id=1]
+[ext_resource path="res://assets/Zombie.png" type="Texture" id=1]
 [ext_resource path="res://src/Actor/Enemy.gd" type="Script" id=2]
+[ext_resource path="res://src/Animation/ActorEnemyDead.tres" type="Animation" id=3]
+[ext_resource path="res://src/Animation/ActorEnemyIdle.tres" type="Animation" id=4]
+[ext_resource path="res://src/Animation/ActorEnemyChase.tres" type="Animation" id=5]
+[ext_resource path="res://src/Animation/ActorEnemyAttack.tres" type="Animation" id=6]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 43, 35 )
+[sub_resource type="AnimationNodeAnimation" id=1]
+animation = "Attack"
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 50, 8 )
+[sub_resource type="AnimationNodeAnimation" id=2]
+animation = "Chase"
 
-[node name="Enemy" type="KinematicBody2D"]
+[sub_resource type="AnimationNodeAnimation" id=3]
+animation = "Dead"
+
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=5]
+advance_condition = "IsNear"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=6]
+advance_condition = "NotIsNear"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=7]
+advance_condition = "IsAttacking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=8]
+advance_condition = "NotIsAttacking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=9]
+advance_condition = "IsDead"
+
+[sub_resource type="AnimationNodeStateMachine" id=10]
+states/Attack/node = SubResource( 1 )
+states/Attack/position = Vector2( 392, 187 )
+states/Chase/node = SubResource( 2 )
+states/Chase/position = Vector2( 392, 81 )
+states/Dead/node = SubResource( 3 )
+states/Dead/position = Vector2( 581, 187 )
+states/Idle/node = SubResource( 4 )
+states/Idle/position = Vector2( 168, 81 )
+transitions = [ "Idle", "Chase", SubResource( 5 ), "Chase", "Idle", SubResource( 6 ), "Chase", "Attack", SubResource( 7 ), "Attack", "Chase", SubResource( 8 ), "Attack", "Dead", SubResource( 9 ) ]
+start_node = "Idle"
+graph_offset = Vector2( 0, 26.424 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=11]
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 39.8875, 64.5811 )
+
+[node name="Enemy 2" type="KinematicBody2D"]
 collision_layer = 2
 collision_mask = 9
 script = ExtResource( 2 )
-speed = Vector2( 100, 1000 )
 
 [node name="enemy" type="Sprite" parent="."]
-position = Vector2( 0, -48 )
+position = Vector2( 17.818, -57.7999 )
 texture = ExtResource( 1 )
+vframes = 4
+hframes = 5
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="enemy"]
+anims/Attack = ExtResource( 6 )
+anims/Chase = ExtResource( 5 )
+anims/Dead = ExtResource( 3 )
+anims/Idle = ExtResource( 4 )
+
+[node name="AnimationTree" type="AnimationTree" parent="enemy"]
+tree_root = SubResource( 10 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+process_mode = 0
+parameters/playback = SubResource( 11 )
+parameters/conditions/IsAttacking = false
+parameters/conditions/IsDead = false
+parameters/conditions/IsNear = false
+parameters/conditions/NotIsAttacking = false
+parameters/conditions/NotIsNear = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -35 )
-shape = SubResource( 1 )
+position = Vector2( 24, -65 )
+shape = SubResource( 12 )
 
-[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
-rect = Rect2( -50, -60, 100, 60 )
-process_parent = true
-physics_process_parent = true
+[node name="Area2D" type="Area2D" parent="."]
+modulate = Color( 0, 0.423529, 0.921569, 1 )
+position = Vector2( 24, -65 )
+collision_layer = 2147483650
 
-[node name="StompDetector" type="Area2D" parent="."]
-modulate = Color( 0, 0.180392, 1, 1 )
-position = Vector2( 0, -70 )
-monitorable = false
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StompDetector"]
-position = Vector2( 0, -8 )
-shape = SubResource( 2 )
-[connection signal="body_entered" from="StompDetector" to="." method="_on_StompDetector_body_entered"]
+[node name="CS2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 12 )
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

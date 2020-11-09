@@ -1,0 +1,170 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://src/Actor/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Levels/LevelTile.tres" type="TileSet" id=2]
+[ext_resource path="res://src/Actor/Enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/tile/game_background_3. 2.png" type="Texture" id=4]
+[ext_resource path="res://assets/tile/Objects/Bush (1).png" type="Texture" id=5]
+[ext_resource path="res://assets/tile/Objects/Tree.png" type="Texture" id=6]
+[ext_resource path="res://assets/tile/Objects/Bush (2).png" type="Texture" id=7]
+[ext_resource path="res://assets/tile/Objects/Skeleton.png" type="Texture" id=8]
+[ext_resource path="res://assets/tile/Objects/ArrowSign.png" type="Texture" id=9]
+[ext_resource path="res://assets/tile/Objects/DeadBush.png" type="Texture" id=10]
+[ext_resource path="res://assets/tile/Objects/Sign.png" type="Texture" id=11]
+[ext_resource path="res://assets/tile/Objects/TombStone (1).png" type="Texture" id=12]
+
+[sub_resource type="TileSet" id=1]
+resource_local_to_scene = true
+0/name = "Bush (1).png 0"
+0/texture = ExtResource( 5 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 180, 80 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "Bush (2).png 1"
+1/texture = ExtResource( 7 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 100, 60 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+2/name = "Skeleton.png 2"
+2/texture = ExtResource( 8 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 0, 100, 60 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+3/name = "Tree.png 3"
+3/texture = ExtResource( 6 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 0, 0, 280, 240 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape_one_way = false
+3/shape_one_way_margin = 0.0
+3/shapes = [  ]
+3/z_index = 0
+4/name = "ArrowSign.png 4"
+4/texture = ExtResource( 9 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 0, 0, 96, 96 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape_one_way = false
+4/shape_one_way_margin = 0.0
+4/shapes = [  ]
+4/z_index = 0
+5/name = "DeadBush.png 5"
+5/texture = ExtResource( 10 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 0, 0, 128, 96 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape_one_way = false
+5/shape_one_way_margin = 0.0
+5/shapes = [  ]
+5/z_index = 0
+6/name = "Sign.png 6"
+6/texture = ExtResource( 11 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 0, 0, 96, 96 )
+6/tile_mode = 0
+6/occluder_offset = Vector2( 0, 0 )
+6/navigation_offset = Vector2( 0, 0 )
+6/shape_offset = Vector2( 0, 0 )
+6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+6/shape_one_way = false
+6/shape_one_way_margin = 0.0
+6/shapes = [  ]
+6/z_index = 0
+7/name = "TombStone (1).png 7"
+7/texture = ExtResource( 12 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 0, 0, 64, 64 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shape_offset = Vector2( 0, 0 )
+7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+7/shape_one_way = false
+7/shape_one_way_margin = 0.0
+7/shapes = [  ]
+7/z_index = 0
+
+[node name="Level" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -100
+
+[node name="BG" type="TextureRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -68.3252
+margin_top = -44.1093
+margin_right = 180.675
+margin_bottom = 105.891
+texture = ExtResource( 4 )
+stretch_mode = 1
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TileMap2" type="TileMap" parent="."]
+tile_set = SubResource( 1 )
+cell_size = Vector2( 100, 25 )
+cell_custom_transform = Transform2D( 80, 0, 0, 80, 0, 0 )
+format = 1
+tile_data = PoolIntArray( 65552, 3, 0, 65581, 3, 0, 524337, 0, 0, 786474, 6, 0, 852008, 0, 0, 1114123, 6, 0, 1441795, 3, 0, 1441816, 4, 0, 1507359, 5, 0, 1572899, 2, 0, 1769479, 6, 0, 1900550, 2, 0, 2097173, 3, 0, 2097194, 3, 0, 2359344, 4, 0, 2359356, 6, 0, 2490386, 0, 0, 2490416, 0, 0, 2555906, 7, 0, 2555914, 1, 0, 2555930, 2, 0, 2555946, 7, 0, 2555956, 2, 0, 2555964, 1, 0 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 128, 128 )
+collision_layer = 8
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 131084, 17, 0, 131085, 15, 0, 131086, 18, 0, 131107, 17, 0, 131108, 15, 0, 131109, 15, 0, 131110, 15, 0, 131111, 18, 0, 196638, 17, 0, 196639, 15, 0, 196640, 15, 0, 196641, 18, 0, 327679, 5, 0, 262151, 17, 0, 262152, 15, 0, 262153, 15, 0, 262154, 15, 0, 262155, 18, 0, 393215, 5, 0, 327698, 17, 0, 327699, 18, 0, 327704, 2, 0, 327705, 1, 0, 327706, 1, 0, 327707, 1, 0, 327708, 4, 0, 327728, 2, 0, 327729, 4, 0, 458751, 5, 0, 393219, 2, 0, 393220, 1, 0, 393221, 4, 0, 393240, 3, 0, 393241, 5, 0, 393242, 5, 0, 393243, 5, 0, 393244, 6, 0, 393264, 3, 0, 393265, 6, 0, 524287, 5, 0, 458755, 3, 0, 458756, 5, 0, 458757, 6, 0, 458776, 3, 0, 458777, 5, 0, 458778, 5, 0, 458779, 5, 0, 458780, 6, 0, 458800, 3, 0, 458801, 6, 0, 589823, 5, 0, 524288, 2, 0, 524289, 1, 0, 524290, 7, 0, 524291, 8, 0, 524292, 5, 0, 524293, 10, 0, 524294, 11, 0, 524295, 1, 0, 524296, 1, 0, 524297, 1, 0, 524298, 1, 0, 524299, 1, 0, 524300, 1, 0, 524301, 1, 0, 524302, 1, 0, 524303, 1, 0, 524304, 1, 0, 524305, 1, 0, 524306, 1, 0, 524307, 1, 0, 524308, 1, 0, 524309, 1, 0, 524310, 1, 0, 524311, 7, 0, 524312, 8, 0, 524313, 5, 0, 524314, 5, 0, 524315, 5, 0, 524316, 10, 0, 524317, 11, 0, 524318, 1, 0, 524319, 1, 0, 524320, 1, 0, 524321, 1, 0, 524322, 1, 0, 524323, 1, 0, 524324, 1, 0, 524325, 1, 0, 524326, 1, 0, 524327, 1, 0, 524328, 1, 0, 524329, 1, 0, 524330, 1, 0, 524331, 1, 0, 524332, 1, 0, 524333, 1, 0, 524334, 1, 0, 524335, 1, 0, 524336, 8, 0, 524337, 6, 0, 589824, 3, 0, 589825, 5, 0, 589826, 5, 0, 589827, 5, 0, 589828, 5, 0, 589829, 5, 0, 589830, 5, 0, 589831, 5, 0, 589832, 5, 0, 589833, 5, 0, 589834, 5, 0, 589835, 5, 0, 589836, 5, 0, 589837, 5, 0, 589838, 5, 0, 589839, 5, 0, 589840, 5, 0, 589841, 5, 0, 589842, 5, 0, 589843, 5, 0, 589844, 5, 0, 589845, 5, 0, 589846, 5, 0, 589847, 5, 0, 589848, 5, 0, 589849, 5, 0, 589850, 5, 0, 589851, 5, 0, 589852, 5, 0, 589853, 5, 0, 589854, 5, 0, 589855, 5, 0, 589856, 5, 0, 589857, 5, 0, 589858, 5, 0, 589859, 5, 0, 589860, 5, 0, 589861, 5, 0, 589862, 5, 0, 589863, 5, 0, 589864, 5, 0, 589865, 5, 0, 589866, 5, 0, 589867, 5, 0, 589868, 5, 0, 589869, 5, 0, 589870, 5, 0, 589871, 5, 0, 589872, 5, 0, 589873, 6, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 247.02, 875.693 )
+gravity = 4000.0
+
+[node name="Enemy" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2439.81, 1023.57 )
