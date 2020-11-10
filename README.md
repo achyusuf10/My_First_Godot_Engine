@@ -1,7 +1,6 @@
 # My_First Godot Engine
-by : Achmad Yusuf And Martha
+by : Achmad Yusuf
 
-## 1. Install Godot engine dahulu, link : https://godotengine.org/
-## 2. Downoad yang tanpa C#
-## 3. Buka Godot Engine, kemudian klik import dan pilih project.godot
-## 4. Silahkan bermain, I hope You Enjoy IT :D
+In this project, i implemented State Machine for Animation Player in Animation Tree
+
+This project is only to complete TBO courses in my university. :D
